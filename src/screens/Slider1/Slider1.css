@@ -1,0 +1,27 @@
+.each-slide-effect > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    height: 428px;
+    /* width: 564px; */
+  }
+  
+  .each-slide-effect span {
+    padding: 20px;
+    font-size: 20px;
+    background: #efefef;
+    text-align: center;
+  }
+
+.slideIndicator{
+  height: 2px;
+  width: 62px;
+  background-color: #3820191A;
+  display: inline-block;
+  transition: background-color 1.2s ease;
+}
+
+.actie-slideIndicator{
+    background-color: #382019;
+}

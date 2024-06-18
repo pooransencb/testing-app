@@ -11,6 +11,9 @@ const Home = () => {
       <Link to="/slider2">
         <button>Slider2</button>
       </Link>
+      <Link to="/slider3">
+        <button>Slider3</button>
+      </Link>
     </div>
   );
 };
