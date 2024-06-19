@@ -1,0 +1,20 @@
+.dotclasstesting{
+    background-color: red;
+}
+
+.slideIndicator{
+    height: 2px;
+    width: 62px;
+    background-color: #3820191A;
+    display: inline-block;
+    transition: background-color 2s ease;
+  }
+  
+  .actie-slideIndicator{
+      background-color: #382019;
+  }
+
+  .test123{
+    background-color: red;  
+    text-align: center;
+  }
