@@ -1,40 +1,49 @@
-import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
-import Home from "./screens/Home/Home";
-import Info from "./screens/Info/Info";
-import Slider1 from "./screens/Slider1/Slider1";
-import Slider2 from "./screens/Slider2/Slider2";
-import Slider3 from "./screens/Slider3/Slider3";
+import "./styles.css";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { Container } from "./Container";
+import { TouchBackend } from "react-dnd-touch-backend";
+import { useEffect, useState } from "react";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Link to='/home'><button>Home</button></Link>,
-  },
-  {
-    path: "/home",
-    element: <Home />,
-  },
-  {
-    path: "/info",
-    element: <Info />,
-  },
-  {
-    path: "/slider1",
-    element: <Slider1 />,
-  },
+// import Example from './example.ts'
 
-  {
-    path: "/slider2",
-    element: <Slider2 />,
-  },
-  {
-    path: "/slider3",
-    element: <Slider3 />,
-  },
-]);
 
-function App() {
-  return <RouterProvider router={router} />;
+export default function App() {
+  const [test,setTest] = useState("");
+
+function myFunction() {
+  let event = new CustomEvent('myCustomEvent', { })
+
+  if (window.confirm("Press a button!")) {
+    setTest("You pressed OK!");
+    window.parent.postMessage(JSON.stringify({
+      event_code: "test",
+      data: "data"
+  }), '*');
+  } else {
+    window.parent.document.dispatchEvent(event);
+    setTest("You pressed Cancel!");
+  }
+} 
+
+useEffect(()=>{
+  window.addEventListener("message", (eventData)=>{
+    console.log("EventData::",eventData);
+  });
+},[])
+
+  return (
+    <div>
+      <div onClick={()=>{myFunction()}} style={{background:'red', height:'500px', display:'flex', flexDirection:'column', alignItems:'center' }}>
+        <div style={{background:'yellow',height:'50px', width:'30px' }}>abc</div>
+        <div style={{background:'orange',height:'50px', width:'30px'}}>123</div>
+        {test}
+      </div>
+      {/* <DndProvider backend={TouchBackend}> */}
+      {/* <Container/> */}
+      {/* <Example /> */}
+      {/* abc */}
+      {/* </DndProvider> */}
+    </div>
+  );
 }
-
-export default App;
